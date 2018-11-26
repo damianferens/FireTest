@@ -4,6 +4,9 @@ import java.util.List;
 
 public class Fire {
     private static final char BURNING = 'w';
+    private static final char BURNING2 = 'y';
+    private static final char BURNING3 = 'z';
+    private static final char BURNED = 'b';
     private static final char TREE = 'T';
     private static final char EMPTY = '.';
     private static final double F = 0.6;
@@ -35,12 +38,18 @@ public class Fire {
                                       String rowBelow){
         String newRow = "";
         for(int i = 0; i < thisRow.length();i++) {
-            switch(thisRow.charAt(i)){
+            switch(thisRow.charAt(i)) {
                 case BURNING:
-                    newRow+= EMPTY;
+                    newRow+= BURNING2;
                     break;
-                case EMPTY:
-                    newRow+= Math.random() < P ? TREE : EMPTY;
+                case BURNING2:
+                    newRow+= BURNING3;
+                    break;
+                case BURNING3:
+                    newRow+= BURNED;
+                    break;
+                case BURNED:
+                    newRow+= Math.random() < P ? TREE : BURNED;
                     break;
                 case TREE:
                     if(i == 0) {
@@ -61,6 +70,10 @@ public class Fire {
                         String below = rowBelow == null ? "" : rowBelow.substring(i - 1, i + 2);
                         newRow += calculateFire(above, below, thisLine);
                     }
+                    break;
+                case EMPTY:
+                    newRow+= EMPTY;
+                    break;
             }
         }
         return newRow;
@@ -71,7 +84,7 @@ public class Fire {
         switch (wind) {
             case north:
                 above += thisLine;
-                if(above.contains(Character.toString(BURNING))){
+                if(above.contains(Character.toString(BURNING)) || above.contains(Character.toString(BURNING2)) || above.contains(Character.toString(BURNING3))){
                     return Math.random() < W ? BURNING : TREE;
                 } else if(below.contains(Character.toString(BURNING))){
                     return Math.random() < F ? BURNING : TREE;
@@ -79,7 +92,7 @@ public class Fire {
                 break;
             case south:
                 below += thisLine;
-                if(below.contains(Character.toString(BURNING))){
+                if(below.contains(Character.toString(BURNING)) || below.contains(Character.toString(BURNING2)) || below.contains(Character.toString(BURNING3))){
                     return Math.random() < W ? BURNING : TREE;
                 } else if(above.contains(Character.toString(BURNING))){
                     return Math.random() < F ? BURNING : TREE;
@@ -89,7 +102,7 @@ public class Fire {
                 neighbors += above;
                 neighbors += below;
                 neighbors += thisLine;
-                if(neighbors.contains(Character.toString(BURNING))){
+                if(neighbors.contains(Character.toString(BURNING)) || neighbors.contains(Character.toString(BURNING2)) || neighbors.contains(Character.toString(BURNING3))){
                     return Math.random() < F ? BURNING : TREE;
                 }
                 break;
@@ -112,11 +125,20 @@ public class Fire {
                     case BURNING:
                         line += "\uD83D\uDD25";
                         break;
+                    case BURNING2:
+                        line += "\uD83D\uDD25";
+                        break;
+                    case BURNING3:
+                        line += "\uD83D\uDD25";
+                        break;
                     case TREE:
                         line += "\uD83C\uDF32";
                         break;
-                    case EMPTY:
+                    case BURNED:
                         line += "⚫";
+                        break;
+                    case EMPTY:
+                        line += "  ";
                         break;
                 }
             }
@@ -127,8 +149,6 @@ public class Fire {
     }
 
     public static void main(String[] args){
-        //⚫️, 🔥, 🌲, 🌳;
-
         List<String> land = Arrays.asList(
                 "....................................................................................................",
                 "....................................................................................................",
@@ -163,7 +183,7 @@ public class Fire {
                 "...................................................................................................."
         );
         print(land);
-        fireTest(land, 100);
+        fireTest(land, 70);
     }
 }
 
