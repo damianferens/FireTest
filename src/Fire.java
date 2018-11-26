@@ -6,9 +6,9 @@ public class Fire {
     private static final char BURNING = 'w';
     private static final char TREE = 'T';
     private static final char EMPTY = '.';
-    private static final double F = 0.2;
-    private static final double P = 0.1;
-    private static final double W = 0.7;
+    private static final double F = 0.6;
+    private static final double P = 0.0;
+    private static final double W = 0.8;
     private static final Wind wind = Wind.north;
 
 
@@ -127,25 +127,41 @@ public class Fire {
     }
 
     public static void main(String[] args){
-//        ⚫️, 🔥, 🌲, 🌳;
+        //⚫️, 🔥, 🌲, 🌳;
 
         List<String> land = Arrays.asList(
-                "TTTTTTTTTTTTTTT",
-                "TTTTTTTTTTTTTTT",
-                "TTTTTTTTTTTTTTT",
-                "TTTTTTTTTTTTTTT",
-                "TTTTTTTTTTTTTTT",
-                "TTTTTTTTTTTTTTT",
-                "TTTTTTTwTTTTTTT",
-                "TTTTTTTTTTTTTTT",
-                "TTTTTTTTTTTTTTT",
-                "TTTTTTTTTTTTTTT",
-                "TTTTTTTTTTTTTTT",
-                "TTTTTTTTTTTTTTT",
-                "TTTTTTTTTTTTTTT",
-                "TTTTTTTTTTTTTTT",
-                "TTTTTTTTTTTTTTT"
-                );
+                "....................................................................................................",
+                "....................................................................................................",
+                ".......................................................................TTTTTTT......................",
+                "..........................................................TTT........TTTTTTTTTTT....................",
+                "........................................................TTTTT......T.TTTTTTTTTTTTTTT..........TTTTTT",
+                "......................................................TTTTTT.......TT.TTTTTTTTTTTTTTTTTTTTTTTTTTT...",
+                "..................................................TTTTTTTTT....TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.....",
+                "................................................TTTTTTTTTTT...TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.....",
+                "..............................................TTTTTTTTTTTTT...TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT...",
+                "...........................................TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT..",
+                ".........................................TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+                ".......................................TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+                "......................................TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.",
+                "...............................................TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT..",
+                "................................................TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT....",
+                ".................................................TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT....",
+                "..................................................TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT......",
+                "...................................................TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT........",
+                ".................................TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT..........",
+                "....................TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.............",
+                "............TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT................",
+                "...........TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT...............",
+                ".........TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT..............",
+                ".........TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT...TTTTTTTTTTTTTTTTTTTTTT...............",
+                "........TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT...............TTTTTwTTTTTTTTTTTTTT................",
+                "...........TTTTTTTTTTTTTTTTTTTTTTTTTTT...........................TTTTTTTTTTTTTTTTT..................",
+                ".................TTTTTTTTTTTT.................................TTTTTTTTTTTTTTTTT.....................",
+                ".................................................................TTTTTTT............................",
+                "...................................................................TTT..............................",
+                "....................................................................................................",
+                "...................................................................................................."
+        );
         print(land);
         fireTest(land, 100);
     }
